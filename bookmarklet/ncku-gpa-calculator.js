@@ -34,6 +34,12 @@
 
             // get all the submit button name
             var semesterNames = getSemesterName();
+            // error check - cannot find semester button
+            if (semesterNames.length === 0) {
+                alert("錯誤：找不到學期資料。\n請確認您是否位於「成績查詢」頁面，且頁面上方有學期按鈕。");
+                return;
+            }
+            
             var allClass = []
             // loop all the submit button
             $.each(semesterNames, function(key, name){
@@ -50,10 +56,15 @@
                     };
                 });
             })
+            // error check - zero credits
+            if (creditTotal === 0) {
+                alert("警告：計算結果為 0 學分。\n這可能是因為網頁改版導致無法抓取成績表格，或者您尚未修課。");
+            }
             var gpaScore = (gpaTotal / creditTotal)
             showResult(gpaScore, allClass, semesterNames, coreGenTotal, overGenTotal)
         } else {
             window.location.href = "http://ncku-gpa.sitw.tw/";
+            alert("網域錯誤：本工具只能在成大成績查詢系統 (qrys.ncku.edu.tw) 使用。\n目前網域: " + d);
         }
     }
 
