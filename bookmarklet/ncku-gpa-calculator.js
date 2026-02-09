@@ -20,7 +20,13 @@
     }
 
     function initGPABookmarklet() {
-        if (document.domain == "qrys.sso2.ncku.edu.tw" || "140.116.165.71:8888" || "140.116.165.72:8888" || "140.116.165.73:8888") {
+        // add the new URL or NCKU.
+        var d = document.domain;
+        if (d === "qrys.ncku.edu.tw" || 
+            d === "qrys.sso2.ncku.edu.tw" || 
+            d === "140.116.165.71" || 
+            d === "140.116.165.72" || 
+            d === "140.116.165.73") {
             var gpaTotal = 0,
                 creditTotal = 0,
                 coreGenTotal = [0,0,0,0],
