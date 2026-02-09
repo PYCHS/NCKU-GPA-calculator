@@ -2,7 +2,7 @@
 (function() {
     // the minimum version of jQuery we want
     var v = "1.12.0";
-
+    
     // check prior inclusion and version
     if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
         var done = false;
@@ -21,7 +21,14 @@
 
     function initGPABookmarklet() {
         // if domain is not ncku grade, redirect to homepage.
-        if (document.domain == "qrys.sso2.ncku.edu.tw" || "140.116.165.71:8888" || "140.116.165.72:8888" || "140.116.165.73:8888") {
+        // get the current domain
+        var d = document.domain;
+        // add the new URL
+        if (d === "qrys.ncku.edu.tw" || 
+            d === "qrys.sso2.ncku.edu.tw" || 
+            d === "140.116.165.71" || 
+            d === "140.116.165.72" || 
+            d === "140.116.165.73") {
             var gpaTotal = 0,
                 creditTotal = 0,
                 coreGenTotal = [0, 0, 0, 0],
